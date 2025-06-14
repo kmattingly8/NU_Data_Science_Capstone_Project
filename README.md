@@ -126,4 +126,12 @@ A lightweight, local Flask web application was developed for real-time denial ri
 
 ## Repository Structure
 
-<pre lang="text"><code> ``` project-root/ ├── data/ # Sample schema or synthetic data ├── notebooks/ # Jupyter Notebooks for EDA and modeling ├── models/ # Saved model files (.joblib or .h5) ├── app/ # Flask app for deployment ├── scripts/ # Python scripts for preprocessing, training ├── requirements.txt # Python dependencies └── README.md # This file ``` </code></pre>
+```
+├── data/ # Sample schema or synthetic data
+├── notebooks/ # Jupyter Notebooks for EDA and modeling
+├── models/ # Saved model files (.joblib or .h5)
+├── app/ # Flask app for deployment
+├── scripts/ # Python scripts for preprocessing, training
+├── requirements.txt # Python dependencies
+└── README.md # This file
+``` 
