@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claim Denial Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            margin-top: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Claim Denial Prediction</h1>
+    <form method="POST">
+        <label>Appt Date:</label>
+        <input type="date" name="Appt_Date">
+
+        <label>Initial Claim Submit Date:</label>
+        <input type="date" name="Initial_Claim_Submit_Date">
+
+        <label>Final Claim Submit Date:</label>
+        <input type="date" name="Final_Claim_Submit_Date">
+
+        <label>Total Charge:</label>
+        <input type="number" name="Total_Charge" step="0.01">
+
+        <label>Procedure Code:</label>
+        <input type="text" name="Procedure_Code">
+
+        <label>Patient Age:</label>
+        <input type="number" name="Patient_Age">
+
+        <label>Patient Sex:</label>
+        <select name="Patient_Sex">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+
+        <label>RAF Score:</label>
+        <input type="number" step="0.01" name="RAF_Score">
+
+        <label>Primary Insurance:</label>
+        <input type="text" name="Primary_Insurance">
+
+        <label>Primary Insurance Type:</label>
+        <select name="Primary_Insurance_Type">
+            <option>Commercial</option>
+            <option>Group Policy</option>
+            <option>Health Maintenance Organization (HMO)</option>
+            <option>Medicaid</option>
+            <option>Medicare Part B</option>
+            <option>Other</option>
+        </select>
+
+        <label>Secondary Insurance:</label>
+        <input type="text" name="Secondary_Insurance">
+
+        <label>Secondary Insurance Type:</label>
+        <select name="Secondary_Insurance_Type">
+            <option>Personal Payment (Cash - No Insurance)</option>
+            <option>Commercial</option>
+            <option>Group Policy</option>
+            <option>Health Maintenance Organization (HMO)</option>
+            <option>Medicaid</option>
+            <option>Medicare Part B</option>
+            <option>Supplemental Policy</option>
+            <option>Other</option>
+        </select>
+
+        <label>Appt Type:</label>
+        <select name="Appt_Type">
+            <option>Annual Visit</option>
+            <option>Follow Up</option>
+            <option>General Consultation</option>
+            <option>New Patient</option>
+            <option>Telehealth Visit</option>
+            <option>Other</option>
+            <option>None</option>
+        </select>
+
+        <!-- ICD10 Codes -->
+        {% for i in range(1, 13) %}
+            <label>ICD10DiagCode_{{ i }}:</label>
+            <input type="text" name="ICD10DiagCode_{{ i }}">
+        {% endfor %}
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if proba is not none %}
+    <div class="result">
+        <h2>Prediction Probability: {{ proba }}</h2>
+        <h2>Denied? {{ 'Yes' if prediction == 1 else 'No' }}</h2>
+    </div>
+    {% endif %}
+</body>
+</html>
+
