@@ -114,7 +114,7 @@ A lightweight, local Flask web application was developed for real-time denial ri
 - **Simple UI** for non-technical users (clinic staff) - input claim data through a web form
 - **Accepts structured input** and returns denial risk prediction
 
-  ![App Screenshot](images/claim_app_header.png)
+  ![App Screenshot](images/claim_app_header2.png)
 
 >  Prototype only. Not currently in production.
 
