@@ -114,6 +114,8 @@ A lightweight, local Flask web application was developed for real-time denial ri
 - **Simple UI** for non-technical users (clinic staff) - input claim data through a web form
 - **Accepts structured input** and returns denial risk prediction
 
+  ![App Screenshot](images/claim_app_header.png)
+
 >  Prototype only. Not currently in production.
 
 
@@ -131,6 +133,7 @@ A lightweight, local Flask web application was developed for real-time denial ri
 ├── notebooks/ # Jupyter Notebooks for EDA and modeling
 ├── models/ # Saved model files (.joblib or .h5)
 ├── claim_app/ # Flask app for deployment
+├── images/ # Screen shots of deployed Flask app web form
 ├── scripts/ # Python scripts for preprocessing, training
 ├── requirements.txt # Python dependencies
 └── README.md # This file
